@@ -1,0 +1,15 @@
+.mainWrapper {
+   background-color: var(--color-bg-main);
+   border-radius: 15px;
+   min-height: calc(100vh - 4rem);
+   margin: 10px auto;
+   max-width: 1440px;
+   position: relative;
+   overflow: hidden;
+   /* box-shadow: 0 20px 40px #0000000d; */
+}
+
+/* We need a specific shape for the top. 
+   Let's try a radial-gradient mask? 
+   Or just place the Logo in a 'cutout' created by the Header.
+*/

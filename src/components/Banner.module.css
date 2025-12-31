@@ -1,0 +1,109 @@
+.bannerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    text-align: center;
+    position: relative;
+    padding-top: 0;
+    /* Space for header handled by wrapper */
+}
+
+.mainTitle {
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: 400;
+    /* Thin but big */
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    max-width: 900px;
+    z-index: 5;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    z-index: 5;
+}
+
+.btnPrimary {
+    background: var(--color-black);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnSecondary {
+    background: white;
+    color: black;
+    padding: 1rem 2.5rem;
+    border-radius: 2rem;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.heroImageContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+    margin-top: -5rem;
+    /* Overlap with text */
+    z-index: 1;
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mask to create the 'cutout' effect on the image if needed, 
+     but the reference shows the image BEHIND the text or the text ON TOP?
+     Text is ON TOP.
+  */
+    border-radius: 20rem 20rem 0 0;
+    /* Arch shape */
+}
+
+/* Floating Elements */
+.floatingAvatars {
+    position: absolute;
+    left: 10%;
+    bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: left;
+}
+
+.avatarGroup {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    border: 2px solid white;
+    margin-right: -10px;
+}
+
+.floatingVideo {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    width: 250px;
+    height: 150px;
+    background: black;
+    border-radius: 1.5rem;
+    overflow: hidden;
+}

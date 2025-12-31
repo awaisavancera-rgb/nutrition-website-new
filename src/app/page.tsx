@@ -1,66 +1,79 @@
-import Image from "next/image";
+import ProductCard from "@/components/ProductCard";
+import Banner from "@/components/Banner";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      <div className={styles.heroWrapper}>
+        <Banner />
+      </div>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>Why Choose Us?</h2>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <h3>Premium Quality</h3>
+            <p>Sourced from the finest ingredients to ensure maximum potency.</p>
+          </div>
+          <div className={styles.card}>
+            <h3>Lab Tested</h3>
+            <p>Every batch is rigorously tested for purity and safety.</p>
+          </div>
+          <div className={styles.card}>
+            <h3>Fast Shipping</h3>
+            <p>Get your supplies delivered to your doorstep in no time.</p>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className={styles.section} style={{ backgroundColor: '#f0f0f0' }}>
+        <h2 className={styles.sectionTitle}>New Arrivals</h2>
+        <div className={styles.grid}>
+          {/* 1. Light Card, Standard */}
+          <ProductCard
+            title="Nike Air Max 270"
+            price="$139.99"
+            category="WOMEN SHOES"
+            theme="light"
+          />
+
+          {/* 2. Light Card, 10% OFF */}
+          <ProductCard
+            title="Nike Air Max 270"
+            price="$139.99"
+            category="WOMEN SHOES"
+            theme="light"
+            badge="10% OFF"
+          />
+
+          {/* 3. Dark Card, Standard */}
+          <ProductCard
+            title="Nike Air Max 270"
+            price="$139.99"
+            category="WOMEN SHOES"
+            theme="dark"
+          />
+
+          {/* 4. Dark Card, 10% OFF */}
+          <ProductCard
+            title="Nike Air Max 270"
+            price="$139.99"
+            category="WOMEN SHOES"
+            theme="dark"
+            badge="10% OFF"
+          />
+
+          {/* 5. Dark Card, Quantity Selector */}
+          <ProductCard
+            title="Nike Air Max 270"
+            price="$139.99"
+            category="WOMEN SHOES"
+            theme="dark"
+            showQuantity={true}
+          />
         </div>
-      </main>
+      </section>
     </div>
   );
 }

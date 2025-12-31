@@ -1,0 +1,40 @@
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 4rem 2rem;
+    /* Inverted border effect - rounded top corners */
+    border-top-left-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-lg);
+    margin-top: -2rem;
+    /* Pull up to overlap the content above */
+    position: relative;
+    z-index: 10;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.column h3 {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+}
+
+.column ul {
+    list-style: none;
+}
+
+.column li {
+    margin-bottom: 0.5rem;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
