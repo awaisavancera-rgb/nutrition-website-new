@@ -1,0 +1,206 @@
+.carouselContainer {
+    width: 100%;
+    padding: 6rem 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 5%;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: -2px;
+    color: #000;
+}
+
+.controls {
+    display: flex;
+    gap: .5rem;
+}
+
+.controlBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.controlBtn:hover {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.trackWrapper {
+    padding: 0 5%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.trackWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.track {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+}
+
+.categoryCard {
+    flex: 0 0 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: radial-gradient(circle at center, #c5c5c5, #000);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    color: white;
+}
+
+/* Concentric Circles Background Effect */
+.circlesOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+.circle1 {
+    width: 150%;
+    height: 150%;
+    top: -25%;
+}
+
+.circle2 {
+    width: 120%;
+    height: 120%;
+    top: -10%;
+}
+
+.circle3 {
+    width: 90%;
+    height: 90%;
+    top: 5%;
+}
+
+.categoryCard:hover {
+    /* No vertical movement on hover */
+}
+
+.imageWrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    z-index: 5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.imageWrapper img {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px 20px 0px 0px;
+    transition: transform 0.8s ease;
+    filter: brightness(0.9);
+}
+
+.categoryCard:hover .imageWrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.categoryCard:hover .imageWrapper img {
+    transform: scale(1.05);
+}
+
+.contentOverlay {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.mainHeadline {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    max-width: 95%;
+    letter-spacing: -1px;
+}
+
+.itemCountBadge {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.6rem 1.8rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .categoryCard {
+        flex: 0 0 320px;
+        height: 500px;
+    }
+
+    .mainHeadline {
+        font-size: 1.8rem;
+    }
+}

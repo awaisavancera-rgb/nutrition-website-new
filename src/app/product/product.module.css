@@ -1,0 +1,376 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #111;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Gallery Section */
+.galleryGrid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    height: 600px;
+}
+
+.mainImageWrapper {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    height: 100%;
+    background-color: #f5f5f5;
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sideImagesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    height: 100%;
+}
+
+.sideImageWrapper {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.sideImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imageTag {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Split */
+.contentSplit {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* Left Column - Details */
+.productHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.productTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.wishlistBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ff4d4d;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.star {
+    color: #ffb800;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.optionsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.colorOptions {
+    display: flex;
+    gap: 1rem;
+}
+
+.colorOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.colorCircle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
+
+.colorName {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.sizeOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sizeBtn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    border: 1px solid #eee;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sizeBtn.active {
+    background: black;
+    color: white;
+    border-color: black;
+}
+
+.description {
+    margin-bottom: 2rem;
+}
+
+.descText {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.shippingSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.shippingCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 1rem;
+}
+
+.shippingIcon {
+    width: 40px;
+    height: 40px;
+    background: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.shippingInfo h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.shippingInfo p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Right Column - Price & Reviews */
+.priceCard {
+    background: black;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.buyNowBtn {
+    background: white;
+    color: black;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reviewsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.seeMore {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.reviewItem {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.reviewerInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.reviewerAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviewerName {
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.reviewDate {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.reviewStars {
+    color: #ffb800;
+    font-size: 0.8rem;
+    margin-left: auto;
+}
+
+.reviewText {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.reviewImages {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.reviewImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+/* Related Products */
+.relatedSection {
+    margin-top: 4rem;
+}
+
+.relatedTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .galleryGrid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .contentSplit {
+        grid-template-columns: 1fr;
+    }
+
+    .sideImagesGrid {
+        height: 400px;
+    }
+
+    .mainImageWrapper {
+        height: 400px;
+    }
+}

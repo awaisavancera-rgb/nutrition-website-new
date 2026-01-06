@@ -1,12 +1,12 @@
 .card {
     background: white;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0.6rem;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0rem;
     border: 1px solid #f0f0f0;
 }
 
@@ -26,7 +26,7 @@
     position: absolute;
     top: 1.5rem;
     left: 1.5rem;
-    background-color: #FF9F1C;
+    background-color: #95b1c1;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 0.5rem;
@@ -35,16 +35,82 @@
     z-index: 2;
 }
 
-.wishlistBtn {
+.overlayButtons {
     position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    background: none;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 3;
+}
+
+.card:hover .overlayButtons {
+    opacity: 1;
+    visibility: visible;
+    bottom: 10px;
+    /* Keep consistent position */
+}
+
+.actionBtn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #95b1c1;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: #ff6b6b;
-    font-size: 1.2rem;
-    z-index: 2;
+    color: white;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* For tooltip positioning */
+}
+
+.actionBtn:hover {
+    background-color: #7a9ab0;
+}
+
+.actionBtn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Tooltip Styles */
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+    margin-bottom: 6px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+[data-tooltip]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    margin-bottom: -2px;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .imageContainer {
@@ -55,13 +121,34 @@
     justify-content: center;
     margin-bottom: 0.5rem;
     position: relative;
+    border: 1px solid #7e7e7e2a;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
 .productImage {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+    transition: opacity 0.5s ease;
+}
+
+.hoverImage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card:hover .productImage:not(.hoverImage) {
+    opacity: 0;
+}
+
+.card:hover .hoverImage {
+    opacity: 1;
 }
 
 .variants {
@@ -109,9 +196,17 @@
 }
 
 .title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--color-black);
+    color: #252323;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2em;
+    display: -webkit-box;
+    letter-spacing: -0.4px;
+    margin-top: 10px;
+    overflow: hidden;
 }
 
 .card.dark .title {
@@ -119,18 +214,58 @@
 }
 
 .category {
-    font-size: 0.75rem;
-    color: #FF9F1C;
-    font-weight: 600;
+    color: #95b1c1;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
+    font-size: .6rem;
+    font-weight: 600;
 }
 
 .priceRow {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+}
+
+.priceWrapper {
+    display: flex;
     align-items: baseline;
     gap: 0.5rem;
-    margin-top: 0.25rem;
+}
+
+.miniQtyControl {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.miniQtyBtn {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+}
+
+.card.dark .miniQtyBtn {
+    background: #252540;
+    border-color: #333;
+    color: white;
+}
+
+.miniQtyValue {
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 1rem;
+    text-align: center;
 }
 
 .price {
@@ -151,7 +286,7 @@
 
 /* Button Styles */
 .addToCartBtn {
-    background-color: #1a1a2e;
+    background: linear-gradient(126.32deg, #000000 3.87%, #454545 47.93%, #000000 89.43%);
     color: white;
     border: none;
     padding: 0.8rem;
@@ -164,12 +299,16 @@
     justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
-    transition: background-color 0.2s;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    position: relative;
+    /* For tooltip positioning */
 }
 
+/*
 .addToCartBtn:hover {
-    background-color: #000;
-}
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}*/
 
 .card.dark .addToCartBtn {
     background-color: white;
@@ -177,10 +316,11 @@
 }
 
 .card.dark .addToCartBtn:hover {
-    background-color: #eee;
+    filter: brightness(0.9);
+    transform: scale(1.02);
 }
 
-/* Quantity Control Style */
+/* Quantity Control Style (Legacy/Optional) */
 .quantityControl {
     display: flex;
     align-items: center;
