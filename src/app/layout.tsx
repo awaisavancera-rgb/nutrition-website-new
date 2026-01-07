@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600"],
 });
 
 import Header from "@/components/Header";
@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable}`}>
+      <body className={`${instrumentSans.variable}`}>
         <div>
           <Header />
           <main>

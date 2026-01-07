@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
@@ -28,17 +30,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
     const category = product?.categories?.[0] || "WOMEN SHOES";
     const price = product?.price ? `$${product.price}` : "$139.99";
     const oldPrice = product?.regularPrice && product?.salePrice ? `$${product.regularPrice}` : (product?.price ? "" : "$169.99");
-    const image = product?.image || "/bannner-hero-image.webp";
-    const images = product?.images || [image, image, image, image];
+    const defaultImage = product?.image || "/bannner-hero-image.webp";
+    const images = product?.images || [defaultImage, defaultImage, defaultImage, defaultImage];
+
+    const [displayImage, setDisplayImage] = useState(defaultImage);
+
+    // Find a hover image that is different from the current display image
+    const hoverImage = images.find(img => img !== displayImage) || images[1] || defaultImage;
 
     return (
         <div className={`${styles.card} ${theme === 'dark' ? styles.dark : ''}`}>
             {badge && <div className={styles.badge}>{badge}</div>}
 
             <div className={styles.imageContainer}>
-                <img src={image} alt={title} className={styles.productImage} />
-                {images.length > 1 && (
-                    <img src={images[1]} alt={title} className={`${styles.productImage} ${styles.hoverImage}`} />
+                <img src={displayImage} alt={title} className={styles.productImage} />
+                {hoverImage && hoverImage !== displayImage && (
+                    <img src={hoverImage} alt={title} className={`${styles.productImage} ${styles.hoverImage}`} />
                 )}
 
                 <div className={styles.overlayButtons}>
@@ -58,7 +65,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
             <div className={styles.variants}>
                 {images.slice(0, 4).map((img, i) => (
-                    <div key={i} className={`${styles.variantThumb} ${i === 0 ? styles.active : ''}`}>
+                    <div
+                        key={i}
+                        className={`${styles.variantThumb} ${img === displayImage ? styles.active : ''}`}
+                        onMouseEnter={() => setDisplayImage(img)}
+                    >
                         <img src={img} alt="variant" className={styles.variantImg} />
                     </div>
                 ))}

@@ -1,0 +1,111 @@
+.ctaSection {
+    margin: 10px;
+    padding: 80px 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+.imageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+}
+
+.content {
+    flex: 1;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #fff;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.priceWrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.oldPrice {
+    font-size: 1.2rem;
+    color: #666;
+    text-decoration: line-through;
+}
+
+.buyBtn {
+    padding: 18px 40px;
+    background: linear-gradient(126.32deg, #ffffff 3.87%, #e0e0e0 47.93%, #ffffff 89.43%);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.buyBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .priceWrapper {
+        justify-content: center;
+    }
+}

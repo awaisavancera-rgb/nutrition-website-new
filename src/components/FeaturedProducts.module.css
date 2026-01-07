@@ -1,0 +1,78 @@
+.featuredSection {
+    margin: 10px;
+    padding: 60px 20px;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    max-width: 1440px;
+    margin: 0 auto 40px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #252323;
+    letter-spacing: -0.02em;
+}
+
+.viewAll {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px solid #000;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.viewAll:hover {
+    color: #555;
+    border-color: #555;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
