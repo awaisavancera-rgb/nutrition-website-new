@@ -36,7 +36,7 @@ const PromotionGrid: React.FC = () => {
                     <div key={promo.id} className={styles.promoCard}>
                         <img src={promo.image} alt={promo.title} className={styles.bgImage} />
                         <div className={styles.infoCard}>
-                            <h2 className={styles.title}>{promo.title}</h2>
+                            <h3 className={styles.title}>{promo.title}</h3>
                             <p className={styles.description}>{promo.description}</p>
                             <a href={promo.link} className={styles.cta}>
                                 {promo.btnText}

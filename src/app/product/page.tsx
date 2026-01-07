@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './product.module.css';
 import ProductCard from '../../components/ProductCard';
+import productsData from '../../data/products.json';
 
 const ProductPage = () => {
     const [selectedColor, setSelectedColor] = useState('Greenish');
@@ -52,6 +53,8 @@ const ProductPage = () => {
             images: ["/bannner-hero-image.webp"]
         }
     ];
+
+    const relatedProducts = productsData.slice(0, 3);
 
     return (
         <div className={styles.container}>
@@ -228,9 +231,13 @@ const ProductPage = () => {
             <div className={styles.relatedSection}>
                 <h2 className={styles.relatedTitle}>More All You Needs.</h2>
                 <div className={styles.relatedGrid}>
-                    <ProductCard title="Nike Air Max" price="$120" image="/bannner-hero-image.webp" />
-                    <ProductCard title="Nike Dunk Low" price="$100" image="/bannner-hero-image.webp" theme="dark" />
-                    <ProductCard title="Nike Zoom" price="$150" image="/bannner-hero-image.webp" />
+                    {relatedProducts.map((p, idx) => (
+                        <ProductCard
+                            key={p.id}
+                            product={p}
+                            theme={idx === 1 ? 'dark' : 'light'}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
