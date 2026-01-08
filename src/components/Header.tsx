@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './Header.module.css';
+import { ShimmerButton } from './ui/shimmer-button';
 
 const Header = () => {
     return (
@@ -29,13 +30,13 @@ const Header = () => {
             <div className={styles.navSection}>
                 <Link href="/seasonal" className={styles.navLink}>Seasonal</Link>
                 <Link href="/accessories" className={styles.navLink}>Accessories</Link>
-                <button className={styles.actionButton}>SIGN IN / UP</button>
-                <button className={styles.iconButton}>
+                <ShimmerButton className={styles.shimmerActionBtn}>SIGN IN / UP</ShimmerButton>
+                <ShimmerButton className={styles.shimmerIconBtn}>
                     {/* Simple Lock/Bag Icon */}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                     </svg>
-                </button>
+                </ShimmerButton>
             </div>
         </header>
     );

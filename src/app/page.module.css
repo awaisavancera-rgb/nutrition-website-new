@@ -23,19 +23,27 @@
   z-index: 2;
 }
 
-/* 
-   Banner is z-1.
-   Header is z-10.
-   Footer is z-10.
-   Section should be z-2 to sit on top of banner bottom if needed, 
-   but Footer sits on top of Section bottom.
-*/
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .sectionTitle {
-  text-align: center;
   font-size: 2.5rem;
   color: #000;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
+}
+
+.shimmerViewAll {
+  padding: 0.6rem 1.5rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  border-radius: 2rem !important;
 }
 
 .grid {

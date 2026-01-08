@@ -65,26 +65,19 @@
     margin-top: 0rem;
 }
 
-.actionButton {
-    background: var(--color-black);
-    color: var(--color-white);
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
+.shimmerActionBtn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    border-radius: 2rem !important;
 }
 
-.iconButton {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--color-black);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
+.shimmerIconBtn {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
 }

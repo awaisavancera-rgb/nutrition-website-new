@@ -28,16 +28,14 @@
     gap: 1rem;
     margin-bottom: 3rem;
     z-index: 5;
+    align-items: center;
 }
 
-.btnPrimary {
-    background: var(--color-black);
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 2rem;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+.shimmerBtn {
+    padding: 1rem 2.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: 2rem !important;
 }
 
 .btnSecondary {

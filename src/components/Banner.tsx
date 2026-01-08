@@ -1,16 +1,17 @@
 import React from 'react';
 import styles from './Banner.module.css';
+import { ShimmerButton } from './ui/shimmer-button';
 
 const Banner = () => {
     return (
         <div className={styles.bannerContainer}>
             <h1 className={styles.mainTitle}>
-                Gear Up Every Season<br />
-                Every Workout!
+                FUEL YOUR PEAK<br />
+                PERFORMANCE
             </h1>
 
             <div className={styles.buttonGroup}>
-                <button className={styles.btnPrimary}>SHOP NOW</button>
+                <ShimmerButton className={styles.shimmerBtn}>SHOP NOW</ShimmerButton>
                 <button className={styles.btnSecondary}>EXPLORE ALL</button>
             </div>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BlogSection.module.css';
+import { ShimmerButton } from './ui/shimmer-button';
 
 const BlogSection: React.FC = () => {
     const posts = [
@@ -34,7 +35,7 @@ const BlogSection: React.FC = () => {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h2 className={styles.title}>From Our Blog</h2>
-                    <a href="#" className={styles.viewAll}>Read All Posts</a>
+                    <ShimmerButton className={styles.shimmerViewAll}>Read All Posts</ShimmerButton>
                 </div>
                 <div className={styles.grid}>
                     {posts.map((post) => (

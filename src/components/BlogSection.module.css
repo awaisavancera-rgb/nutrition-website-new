@@ -23,6 +23,13 @@
     color: #252323;
 }
 
+.shimmerViewAll {
+    padding: 0.6rem 1.5rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    border-radius: 2rem !important;
+}
+
 .viewAll {
     font-size: 0.9rem;
     font-weight: 600;

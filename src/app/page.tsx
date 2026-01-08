@@ -1,18 +1,24 @@
+"use client";
+
+import React, { useState } from 'react';
 import ProductCard from "@/components/ProductCard";
 import Banner from "@/components/Banner";
 import CategoryCarousel from "@/components/CategoryCarousel";
 import PromotionGrid from "@/components/PromotionGrid";
 import FeaturedProducts from "@/components/FeaturedProducts";
-import SingleProductCTA from "@/components/SingleProductCTA";
+import FeaturedPromoSection from "@/components/FeaturedPromoSection";
 import ShoppableVideos from "@/components/ShoppableVideos";
 import TextTestimonials from "@/components/TextTestimonials";
 import BlogSection from "@/components/BlogSection";
 import styles from "./page.module.css";
 import productsData from "@/data/products.json";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 export default function Home() {
-  // Get first 10 products for the grid
-  const displayProducts = productsData.slice(0, 10);
+  const [showAll, setShowAll] = useState(false);
+
+  // Get products for the grid based on showAll state
+  const displayProducts = showAll ? productsData : productsData.slice(0, 10);
   // Get next 5 products for Featured section
   const featuredProducts = productsData.slice(10, 15);
 
@@ -27,7 +33,12 @@ export default function Home() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>New Arrivals</h2>
-          <a href="#" className={styles.viewAll}>View All</a>
+          <ShimmerButton
+            className={styles.shimmerViewAll}
+            onClick={() => setShowAll(!showAll)}
+          >
+            {showAll ? "Show Less" : "View All"}
+          </ShimmerButton>
         </div>
         <div className={styles.grid}>
           {displayProducts.map((product: any) => (
@@ -40,7 +51,7 @@ export default function Home() {
 
       <FeaturedProducts products={featuredProducts} title="Best Sellers" />
 
-      <SingleProductCTA />
+      <FeaturedPromoSection />
 
       <ShoppableVideos />
 

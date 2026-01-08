@@ -1,0 +1,437 @@
+.promoSection {
+    padding: 15px;
+    background-color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+}
+
+.bannerCanvas {
+    background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+}
+
+/* Abstract shapes */
+.shape {
+    position: absolute;
+    background: rgba(186, 230, 253, 0.4);
+    border-radius: 20px;
+    filter: blur(40px);
+    z-index: 1;
+}
+
+.shape1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+}
+
+.shape2 {
+    width: 300px;
+    height: 300px;
+    bottom: -50px;
+    right: -50px;
+}
+
+.contentWrapper {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* Top Section */
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.brandInfo {
+    max-width: 320px;
+}
+
+.brandTitle {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    font-weight: 600 !important;
+    color: #0f172a;
+    /* slate-900 */
+}
+
+.brandHighlight {
+    color: #0284c7;
+    /* sky-600 */
+}
+
+.brandDescription {
+    margin-top: 1rem;
+    color: #475569;
+    /* slate-600 */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.heroArea {
+    flex: 1;
+    max-width: 800px;
+    padding-left: 60px;
+}
+
+.heroText {
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 600 !important;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+}
+
+.italicText {
+    font-style: italic;
+    font-weight: 400 !important;
+}
+
+.ctaWrapper {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.ctaButton {
+    border-radius: 9999px !important;
+    padding: 12px 25px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+
+.ctaIcon {
+    width: 17px;
+    height: 17px;
+    margin-left: 12px;
+    transition: transform 0.3s;
+}
+
+.ctaButton:hover .ctaIcon {
+    transform: translateX(4px);
+}
+
+.arrowDecoration {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.arrowLine {
+    width: 64px;
+    height: 1.5px;
+    background-color: #bae6fd;
+    /* sky-200 */
+}
+
+.arrowDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid #7dd3fc;
+    /* sky-300 */
+}
+
+/* Bottom Section */
+.bottomSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.sliderContainer {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.glassCard {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fadeIn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fadeOut {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.productVisual {
+    background-color: #f8fafc;
+    /* slate-50 */
+    border-radius: 12px;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f1f5f9;
+}
+
+.actualProductImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.cardDetails {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 10px 5px 0;
+    text-align: left;
+}
+
+.cardBadge {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #0ea5e9;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.cardTitle {
+    font-size: 1.1rem;
+    font-weight: 600 !important;
+    color: #1e293b;
+    /* slate-800 */
+    line-height: 1.3;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.priceTag {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+}
+
+.currency {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.priceValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Progress Bar */
+.progressWrapper {
+    width: 100%;
+    height: 2px;
+    background: rgba(15, 23, 42, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background: #0f172a;
+    width: 0;
+    animation: progress linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Stats Section */
+.statsAndSocials {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.statsWrapper {
+    text-align: right;
+    width: 100%;
+}
+
+.statsHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 24px;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.statsLabel {
+    font-size: 1.125rem;
+    color: #64748b;
+    font-weight: 400 !important;
+}
+
+.statsValue {
+    font-size: 3.75rem;
+    font-weight: 600 !important;
+    color: #0f172a;
+    letter-spacing: -0.05em;
+}
+
+.statsDescription {
+    font-size: 0.75rem;
+    color: #64748b;
+    max-width: 240px;
+    margin-left: auto;
+    line-height: 1.6;
+}
+
+.footerSocials {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 12px;
+}
+
+.socialIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f1f5f9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+    background-color: #f0f9ff;
+}
+
+.socialText {
+    font-size: 9px;
+    font-weight: 700;
+    color: #000;
+}
+
+.socialDivider {
+    height: 20px;
+    width: 1px;
+    background-color: #e2e8f0;
+}
+
+.supportLabel {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .bannerCanvas {
+        padding: 40px;
+    }
+
+    .topSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .heroArea {
+        padding-left: 0;
+        max-width: 100%;
+    }
+
+    .heroText {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottomSection {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .glassCard {
+        max-width: 100%;
+    }
+
+    .statsAndSocials {
+        align-items: flex-start;
+        max-width: 100%;
+    }
+
+    .statsWrapper {
+        text-align: left;
+    }
+
+    .statsHeader {
+        justify-content: flex-start;
+    }
+
+    .statsDescription {
+        margin-left: 0;
+    }
+
+    .heroText {
+        font-size: 2.5rem;
+    }
+}
