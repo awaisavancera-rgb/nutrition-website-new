@@ -1,12 +1,12 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: .5rem;
 }
 
 .section {
     border-bottom: 1px solid #eee;
-    padding-bottom: 1.5rem;
+    padding: 1.2rem 0;
 }
 
 .section:last-child {
@@ -16,11 +16,34 @@
 .sectionTitle {
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 1.2rem;
+    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    user-select: none;
+}
+
+.sectionContent {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.collapsed .sectionContent {
+    grid-template-rows: 0fr;
+}
+
+.innerContent {
+    overflow: hidden;
+    transition: opacity 0.3s ease, padding-top 0.4s ease;
+    opacity: 1;
+    padding-top: 1.2rem;
+}
+
+.collapsed .innerContent {
+    opacity: 0;
+    padding-top: 0;
 }
 
 .list {
@@ -75,12 +98,40 @@
 }
 
 .priceRange {
-    padding: 0 0.5rem;
+    padding: 10px 5px;
 }
 
-.rangeSlider {
-    width: 100%;
-    margin-bottom: 1rem;
+.price_slider {
+    position: relative;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    margin: 25px 0 20px;
+}
+
+.ui_slider_range {
+    position: absolute;
+    height: 100%;
+    background: #000;
+    border-radius: 2px;
+}
+
+.ui_slider_handle {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: transform 0.2s;
+}
+
+.ui_slider_handle:hover {
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
 .priceInputs {
@@ -92,8 +143,8 @@
 }
 
 .colorGrid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 0.8rem;
 }
 
@@ -117,7 +168,8 @@
 }
 
 .sizeBtn {
-    padding: 0.5rem 1rem;
+    padding: 6px 15px 5px;
+    border-radius: 3px;
     border: 1px solid #eee;
     background: white;
     font-size: 0.85rem;
@@ -126,7 +178,8 @@
 }
 
 .sizeBtn:hover {
-    border-color: #000;
+    background-color: #000;
+    color: #fff;
 }
 
 .featuredList {
