@@ -1,0 +1,172 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #444;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.listItem:hover {
+    color: #000;
+}
+
+.count {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: #444;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.priceRange {
+    padding: 0 0.5rem;
+}
+
+.rangeSlider {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.priceInputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.colorGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.8rem;
+}
+
+.colorCircle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.colorCircle:hover {
+    transform: scale(1.1);
+}
+
+.sizeGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sizeBtn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #eee;
+    background: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sizeBtn:hover {
+    border-color: #000;
+}
+
+.featuredList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.featuredItem {
+    display: flex;
+    gap: 1rem;
+}
+
+.featuredImg {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.featuredInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.featuredName {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #000;
+    line-height: 1.4;
+}
+
+.featuredPrice {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.rating {
+    color: #ffb800;
+    font-size: 0.7rem;
+}

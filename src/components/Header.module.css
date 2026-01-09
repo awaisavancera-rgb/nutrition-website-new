@@ -65,19 +65,175 @@
     margin-top: 0rem;
 }
 
-.shimmerActionBtn {
-    padding: 0.75rem 1.5rem !important;
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
-    border-radius: 2rem !important;
+.actionBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-black);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.shimmerIconBtn {
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
+.actionBtn:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.iconBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-black);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.iconBtn:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.cartBadge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #fff;
+    color: black;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #d1d1d1;
+}
+
+.iconGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dropdownWrapper {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    width: 300px;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    animation: slideDown 0.3s ease-out;
+    border: 1px solid #f1f5f9;
+}
+
+.dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border-left: 1px solid #f1f5f9;
+    border-top: 1px solid #f1f5f9;
+}
+
+.dropdownTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #0f172a;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputGroup label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.inputGroup input {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+.inputGroup input:focus {
+    outline: none;
+    border-color: #0f172a;
+}
+
+.submitBtn {
+    padding: 0.75rem;
+    background: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.submitBtn:hover {
+    background: #1e293b;
+}
+
+.switchText {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #64748b;
+    margin-top: 1rem;
+}
+
+.switchText span {
+    color: #0f172a;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

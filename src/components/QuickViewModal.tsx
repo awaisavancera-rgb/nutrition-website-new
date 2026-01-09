@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './QuickViewModal.module.css';
 import { ShimmerButton } from './ui/shimmer-button';
+import { useCart } from '../context/CartContext';
 
 interface QuickViewModalProps {
     product: {
@@ -28,10 +29,12 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
     const [quantity, setQuantity] = useState(1);
     const [selectedColor, setSelectedColor] = useState('Greenish');
     const [selectedSize, setSelectedSize] = useState('S');
+    const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
     const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
     const [isZoomed, setIsZoomed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isAdded, setIsAdded] = useState(false);
+    const { addItem } = useCart();
 
     const handlePrevImage = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -81,14 +84,22 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
 
         // Simulate API call
         setTimeout(() => {
+            addItem({
+                id: product.id,
+                name: product.name,
+                price: parseFloat(product.price.replace('$', '')),
+                image: product.image,
+                quantity: quantity
+            });
             setIsLoading(false);
             setIsAdded(true);
 
-            // Close modal after showing "Added" state
+            // Reset "Added" state after 2 seconds
             setTimeout(() => {
-                onClose();
-            }, 1500);
-        }, 1000);
+                setIsAdded(false);
+                onClose(); // Close modal after adding
+            }, 2000);
+        }, 800);
     };
 
     const defaultColors = [
@@ -155,14 +166,61 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
 
                     <div className={styles.detailsArea}>
                         <div className={styles.headerInfo}>
-                            <span className={styles.category}>{product.categories[0]}</span>
+                            <div className={styles.badgeRow}>
+                                <span className={styles.saleBadge}>-10%</span>
+                            </div>
                             <h2 className={styles.title}>{product.name}</h2>
+
+                            <div className={styles.ratingRow}>
+                                <div className={styles.stars}>
+                                    {[...Array(5)].map((_, i) => (
+                                        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#ffb800">
+                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                        </svg>
+                                    ))}
+                                </div>
+                                <span className={styles.reviewCount}>1 review</span>
+                            </div>
 
                             <div className={styles.priceRow}>
                                 <span className={styles.price}>${product.price}</span>
                                 {product.regularPrice && product.regularPrice !== product.price && (
                                     <span className={styles.oldPrice}>${product.regularPrice}</span>
                                 )}
+                            </div>
+                        </div>
+
+                        <div className={styles.descriptionAccordion}>
+                            <button
+                                className={styles.accordionHeader}
+                                onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
+                            >
+                                <span>Description</span>
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    style={{ transform: isDescriptionOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}
+                                >
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                            <div
+                                className={`${styles.accordionContent} ${isDescriptionOpen ? styles.open : ''}`}
+                            >
+                                <div
+                                    className={styles.descriptionText}
+                                    dangerouslySetInnerHTML={{
+                                        __html: (product.description || "This advanced serum is designed to reduce the appearance of fine lines and wrinkles, promoting smoother and more youthful skin. Infused with potent anti-aging ingredients, it hydrates and revitalizes your complexion.")
+                                            .replace(/\\r\\n/g, ' ')
+                                            .replace(/\\n/g, ' ')
+                                            .replace(/\r\n/g, ' ')
+                                            .replace(/\n/g, ' ')
+                                    }}
+                                />
                             </div>
                         </div>
 
@@ -211,34 +269,40 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
                                 <span className={styles.qtyValue}>{quantity}</span>
                                 <button className={styles.qtyBtn} onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
-                            <ShimmerButton
-                                className={styles.shimmerAddToCart}
+
+                            <button
+                                className={styles.addToCartBtn}
                                 onClick={handleAddToCart}
                                 disabled={isLoading || isAdded}
                             >
-                                <div className={styles.btnContent}>
-                                    {isLoading ? (
-                                        <div className={styles.loader}></div>
-                                    ) : isAdded ? (
-                                        <>
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                                <polyline points="20 6 9 17 4 12"></polyline>
-                                            </svg>
-                                            Added to Cart
-                                        </>
-                                    ) : (
-                                        <>
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                                                <circle cx="9" cy="21" r="1"></circle>
-                                                <circle cx="20" cy="21" r="1"></circle>
-                                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                            </svg>
-                                            Add to Cart
-                                        </>
-                                    )}
-                                </div>
-                            </ShimmerButton>
+                                {isLoading ? (
+                                    <div className={styles.loader}></div>
+                                ) : isAdded ? (
+                                    "Added to Cart"
+                                ) : (
+                                    "Add to Cart"
+                                )}
+                            </button>
+
+                            <button className={styles.iconBtn} aria-label="Add to wishlist">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                                </svg>
+                            </button>
+
+                            <button className={styles.iconBtn} aria-label="Compare">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5" />
+                                </svg>
+                            </button>
                         </div>
+
+                        <ShimmerButton
+                            className={styles.buyNowBtn}
+                            onClick={() => console.log('Buy it now')}
+                        >
+                            Buy it now
+                        </ShimmerButton>
                     </div>
                 </div>
             </div>

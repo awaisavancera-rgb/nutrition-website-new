@@ -1,7 +1,7 @@
 .promoSection {
     padding: 15px;
     background-color: #fff;
-    font-family: 'Instrument Sans', sans-serif;
+    font-family: var(--font-instrument-sans);
 }
 
 .bannerCanvas {
@@ -210,228 +210,89 @@
     padding: 10px;
 }
 
-.cardDetails {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px 10px 5px 0;
-    text-align: left;
+.productInfo {
+    flex: 1;
 }
 
-.cardBadge {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #0ea5e9;
-    margin-bottom: 6px;
-    display: block;
-}
-
-.cardTitle {
+.productName {
     font-size: 1.1rem;
     font-weight: 600 !important;
-    color: #1e293b;
-    /* slate-800 */
-    line-height: 1.3;
-    margin-bottom: 8px;
+    color: #0f172a;
+    margin-bottom: 4px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.priceTag {
+.productPrice {
+    font-size: 1rem;
+    font-weight: 500 !important;
+    color: #64748b;
+}
+
+.statsGrid {
     display: flex;
-    align-items: baseline;
-    gap: 2px;
+    gap: 40px;
 }
 
-.currency {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #0f172a;
-}
-
-.priceValue {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0f172a;
-}
-
-/* Progress Bar */
-.progressWrapper {
-    width: 100%;
-    height: 2px;
-    background: rgba(15, 23, 42, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progressBar {
-    height: 100%;
-    background: #0f172a;
-    width: 0;
-    animation: progress linear forwards;
-}
-
-@keyframes progress {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-/* Stats Section */
-.statsAndSocials {
+.statItem {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 40px;
-    width: 100%;
-    max-width: 400px;
 }
 
-.statsWrapper {
-    text-align: right;
-    width: 100%;
-}
-
-.statsHeader {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-end;
-    gap: 24px;
-    border-bottom: 2px solid #0f172a;
-    padding-bottom: 8px;
-    margin-bottom: 16px;
-}
-
-.statsLabel {
-    font-size: 1.125rem;
-    color: #64748b;
-    font-weight: 400 !important;
-}
-
-.statsValue {
-    font-size: 3.75rem;
+.statValue {
+    font-size: 2rem;
     font-weight: 600 !important;
     color: #0f172a;
-    letter-spacing: -0.05em;
 }
 
-.statsDescription {
-    font-size: 0.75rem;
+.statLabel {
+    font-size: 0.875rem;
     color: #64748b;
-    max-width: 240px;
-    margin-left: auto;
-    line-height: 1.6;
-}
-
-.footerSocials {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.socialLinks {
-    display: flex;
-    gap: 12px;
-}
-
-.socialIcon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #f1f5f9;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.socialIcon:hover {
-    background-color: #f0f9ff;
-}
-
-.socialText {
-    font-size: 9px;
-    font-weight: 700;
-    color: #000;
-}
-
-.socialDivider {
-    height: 20px;
-    width: 1px;
-    background-color: #e2e8f0;
-}
-
-.supportLabel {
-    font-size: 10px;
-    font-weight: 700;
-    color: #94a3b8;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.05em;
 }
 
-
-/* Responsive */
-@media (max-width: 1200px) {
-    .bannerCanvas {
-        padding: 40px;
-    }
-
+@media (max-width: 1024px) {
     .topSection {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 30px;
     }
 
     .heroArea {
         padding-left: 0;
-        max-width: 100%;
     }
 
     .heroText {
         font-size: 3rem;
     }
-}
 
-@media (max-width: 768px) {
     .bottomSection {
         flex-direction: column;
-        align-items: stretch;
-    }
-
-    .glassCard {
-        max-width: 100%;
-    }
-
-    .statsAndSocials {
         align-items: flex-start;
+        gap: 30px;
+    }
+
+    .sliderContainer {
         max-width: 100%;
     }
+}
 
-    .statsWrapper {
-        text-align: left;
-    }
-
-    .statsHeader {
-        justify-content: flex-start;
-    }
-
-    .statsDescription {
-        margin-left: 0;
+@media (max-width: 640px) {
+    .bannerCanvas {
+        padding: 40px 20px;
     }
 
     .heroText {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
+    }
+
+    .statsGrid {
+        gap: 20px;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
     }
 }

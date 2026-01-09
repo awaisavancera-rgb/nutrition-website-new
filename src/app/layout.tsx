@@ -8,9 +8,10 @@ const instrumentSans = Instrument_Sans({
   weight: ["400", "500", "600"],
 });
 
-import Header from "@/components/Header";
+import { CartProvider } from "@/context/CartContext";
+import HeaderWrapper from "@/components/HeaderWrapper";
 import Footer from "@/components/Footer";
-import styles from '@/components/MainLayout.module.css';
+import CartSidebar from "@/components/CartSidebar";
 
 export const metadata: Metadata = {
   title: "Nutrition Supplies",
@@ -25,13 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${instrumentSans.variable}`}>
-        <div>
-          <Header />
+        <CartProvider>
+          <HeaderWrapper />
+          <CartSidebar />
           <main>
             {children}
           </main>
           <Footer />
-        </div>
+        </CartProvider>
       </body>
     </html>
   );

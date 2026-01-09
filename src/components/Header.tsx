@@ -1,9 +1,18 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { ShimmerButton } from './ui/shimmer-button';
+import { User, ShoppingBag } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 
 const Header = () => {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
+    const { toggleSidebar, cartItems } = useCart();
+
+    const cartItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
     return (
         <header className={styles.headerContainer}>
             {/* The SVG Cutout Overlay - Matches the body background color */}
@@ -30,13 +39,57 @@ const Header = () => {
             <div className={styles.navSection}>
                 <Link href="/seasonal" className={styles.navLink}>Seasonal</Link>
                 <Link href="/accessories" className={styles.navLink}>Accessories</Link>
-                <ShimmerButton className={styles.shimmerActionBtn}>SIGN IN / UP</ShimmerButton>
-                <ShimmerButton className={styles.shimmerIconBtn}>
-                    {/* Simple Lock/Bag Icon */}
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                </ShimmerButton>
+
+                <div className={styles.iconGroup}>
+                    <div className={styles.dropdownWrapper}>
+                        <button
+                            className={styles.actionBtn}
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        >
+                            <User size={20} />
+                        </button>
+
+                        {isDropdownOpen && (
+                            <div className={styles.dropdown}>
+                                <h3 className={styles.dropdownTitle}>
+                                    {isLogin ? 'Login' : 'Sign Up'}
+                                </h3>
+                                <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+                                    <div className={styles.inputGroup}>
+                                        <label>Email</label>
+                                        <input type="email" placeholder="your@email.com" />
+                                    </div>
+                                    <div className={styles.inputGroup}>
+                                        <label>Password</label>
+                                        <input type="password" placeholder="••••••••" />
+                                    </div>
+                                    {!isLogin && (
+                                        <div className={styles.inputGroup}>
+                                            <label>Confirm Password</label>
+                                            <input type="password" placeholder="••••••••" />
+                                        </div>
+                                    )}
+                                    <button type="submit" className={styles.submitBtn}>
+                                        {isLogin ? 'Sign In' : 'Create Account'}
+                                    </button>
+                                </form>
+                                <p className={styles.switchText}>
+                                    {isLogin ? "Don't have an account? " : "Already have an account? "}
+                                    <span onClick={() => setIsLogin(!isLogin)}>
+                                        {isLogin ? 'Sign Up' : 'Login'}
+                                    </span>
+                                </p>
+                            </div>
+                        )}
+                    </div>
+
+                    <button className={styles.iconBtn} onClick={toggleSidebar}>
+                        <ShoppingBag size={20} />
+                        {cartItemCount > 0 && (
+                            <span className={styles.cartBadge}>{cartItemCount}</span>
+                        )}
+                    </button>
+                </div>
             </div>
         </header>
     );

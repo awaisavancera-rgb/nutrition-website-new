@@ -1,0 +1,62 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.resultsCount {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.viewSwitcher {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.viewBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.viewBtn.active {
+    color: #000;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sortBy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.select {
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+}

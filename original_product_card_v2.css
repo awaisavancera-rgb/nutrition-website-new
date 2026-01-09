@@ -37,44 +37,43 @@
 
 .overlayButtons {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
     gap: 0.5rem;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 3;
-    transform: translateX(10px);
 }
 
 .card:hover .overlayButtons {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0);
+    bottom: 10px;
+    /* Keep consistent position */
 }
 
 .actionBtn {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #95b1c1;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #000;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: white;
+    transition: background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
     /* For tooltip positioning */
 }
 
 .actionBtn:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: #7a9ab0;
 }
 
 .actionBtn svg {
@@ -86,41 +85,32 @@
 [data-tooltip]:hover::after {
     content: attr(data-tooltip);
     position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-    background-color: #000;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
     color: white;
-    padding: 6px 10px;
+    padding: 4px 8px;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 10px;
     white-space: nowrap;
-    margin-right: 10px;
+    margin-bottom: 6px;
     z-index: 10;
     pointer-events: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 [data-tooltip]:hover::before {
     content: '';
     position: absolute;
-    top: 50%;
-    right: 100%;
-    transform: translateY(-50%);
-    border-width: 5px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px;
     border-style: solid;
-    border-color: transparent transparent transparent #000;
-    margin-right: 0px;
+    border-color: #333 transparent transparent transparent;
+    margin-bottom: -2px;
     z-index: 10;
     pointer-events: none;
-}
-
-.imageLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
 }
 
 .imageContainer {
@@ -203,12 +193,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-}
-
-.titleLink {
-    text-decoration: none;
-    color: inherit;
-    display: block;
 }
 
 .title {
@@ -301,7 +285,7 @@
 
 /* Button Styles */
 .addToCartBtn {
-    background-color: #000;
+    background: linear-gradient(126.32deg, #000000 3.87%, #454545 47.93%, #000000 89.43%);
     color: white;
     border: none;
     padding: 0.8rem;
@@ -316,33 +300,14 @@
     margin-top: 0.5rem;
     transition: transform 0.2s ease, filter 0.2s ease;
     position: relative;
+    /* For tooltip positioning */
 }
 
-.addToCartBtn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.loader {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #fff;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
+/*
+.addToCartBtn:hover {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}*/
 
 .card.dark .addToCartBtn {
     background-color: white;
