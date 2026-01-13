@@ -105,3 +105,68 @@
     border-radius: 1.5rem;
     overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+    .mainTitle {
+        font-size: 3.5rem;
+        max-width: 700px;
+    }
+
+    .heroImageContainer {
+        max-width: 500px;
+        height: 400px;
+    }
+
+    .floatingAvatars,
+    .floatingVideo {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .bannerContainer {
+        min-height: 60vh;
+        padding-top: 40px;
+    }
+
+    .mainTitle {
+        font-size: 2.5rem;
+        max-width: 90%;
+        margin-bottom: 1.5rem;
+    }
+
+    .heroImageContainer {
+        max-width: 400px;
+        height: 320px;
+        margin-top: -3rem;
+    }
+
+    .shimmerBtn,
+    .btnSecondary {
+        padding: 0.8rem 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .mainTitle {
+        font-size: 1.75rem;
+    }
+
+    .heroImageContainer {
+        max-width: 300px;
+        height: 240px;
+        margin-top: -2rem;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .shimmerBtn,
+    .btnSecondary {
+        width: 100%;
+    }
+}

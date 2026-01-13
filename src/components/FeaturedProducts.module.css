@@ -23,6 +23,7 @@
 }
 
 .title {
+    font-family: var(--font-instrument-sans);
     font-size: 3rem;
     font-weight: 700;
     color: #000;
@@ -97,7 +98,25 @@
 }
 
 @media (max-width: 480px) {
+    .featuredSection {
+        padding: 40px 10px;
+    }
+
     .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .shimmerViewAll {
+        padding: 0.5rem 1.2rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    .header {
+        margin-bottom: 30px;
     }
 }

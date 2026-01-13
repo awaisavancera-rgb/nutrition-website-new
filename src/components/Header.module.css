@@ -237,3 +237,148 @@
         transform: translateY(0);
     }
 }
+
+.mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-black);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.mobileIcons {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 100;
+}
+
+.mobileMenuOverlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 90;
+    flex-direction: column;
+    padding: 100px 2rem 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobileMenuOpen {
+    transform: translateX(0);
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mobileNavLink {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-black);
+    text-decoration: none;
+}
+
+.mobileActionGroup {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.mobileActionBtn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .headerContainer {
+        padding: 1rem 1.5rem;
+    }
+
+    .navSection {
+        display: none;
+    }
+
+    .mobileMenuBtn {
+        display: block;
+    }
+
+    .mobileIcons {
+        display: flex;
+    }
+
+    .mobileMenuOverlay {
+        display: flex;
+    }
+
+    .logoArea {
+        width: 200px;
+    }
+
+    .logoText {
+        font-size: 1.5rem;
+    }
+
+    .topCutout {
+        width: 450px;
+        height: 90px;
+        top: -35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .topCutout {
+        width: 350px;
+        height: 80px;
+        top: -30px;
+    }
+
+    .logoArea {
+        width: 150px;
+    }
+
+    .logoText {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .topCutout {
+        width: 280px;
+        height: 70px;
+        top: -25px;
+    }
+
+    .logoArea {
+        width: 120px;
+    }
+
+    .logoText {
+        font-size: 1rem;
+    }
+
+    .iconGroup {
+        gap: 0.5rem;
+    }
+
+    .actionBtn,
+    .iconBtn {
+        width: 35px;
+        height: 35px;
+    }
+}

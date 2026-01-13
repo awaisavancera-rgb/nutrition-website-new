@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { User, ShoppingBag } from 'lucide-react';
+import { User, ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
     const { toggleSidebar, cartItems } = useCart();
 
@@ -24,6 +25,14 @@ const Header = () => {
                     />
                 </svg>
             </div>
+
+            <button
+                className={styles.mobileMenuBtn}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle Menu"
+            >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
 
             <div className={styles.navSection}>
                 <Link href="/shop" className={styles.navLink}>Shop</Link>
@@ -90,6 +99,41 @@ const Header = () => {
                         )}
                     </button>
                 </div>
+            </div>
+
+            {/* Mobile Icons - Visible only on mobile */}
+            <div className={styles.mobileIcons}>
+                <button
+                    className={styles.actionBtn}
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                >
+                    <User size={20} />
+                </button>
+                <button className={styles.iconBtn} onClick={toggleSidebar}>
+                    <ShoppingBag size={20} />
+                    {cartItemCount > 0 && (
+                        <span className={styles.cartBadge}>{cartItemCount}</span>
+                    )}
+                </button>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`${styles.mobileMenuOverlay} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}>
+                <nav className={styles.mobileNav}>
+                    <Link href="/shop" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Shop</Link>
+                    <Link href="/men" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Men</Link>
+                    <Link href="/women" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Women</Link>
+                    <Link href="/trending" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Trending</Link>
+                    <Link href="/seasonal" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Seasonal</Link>
+                    <Link href="/accessories" className={styles.mobileNavLink} onClick={() => setIsMenuOpen(false)}>Accessories</Link>
+
+                    <div className={styles.mobileActionGroup}>
+                        <button className={styles.mobileActionBtn} onClick={() => { setIsDropdownOpen(!isDropdownOpen); setIsMenuOpen(false); }}>
+                            <User size={20} />
+                            <span>Account</span>
+                        </button>
+                    </div>
+                </nav>
             </div>
         </header>
     );

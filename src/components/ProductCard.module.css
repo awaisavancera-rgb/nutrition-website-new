@@ -432,3 +432,48 @@
 .card.vertical .price {
     font-size: 1rem;
 }
+
+@media (max-width: 480px) {
+    .card {
+        padding: 0.4rem;
+    }
+
+    .imageContainer {
+        height: 150px;
+        border-radius: 10px;
+    }
+
+    .variants {
+        gap: 0.3rem;
+    }
+
+    .variantThumb {
+        width: 28px;
+        height: 28px;
+    }
+
+    .title {
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+
+    .price {
+        font-size: 0.95rem;
+    }
+
+    .miniQtyControl {
+        display: none;
+        /* Hide quantity control on mobile grid to save space */
+    }
+
+    .addToCartBtn {
+        padding: 0.6rem;
+        font-size: 0.8rem;
+        gap: 0.3rem;
+    }
+
+    .addToCartBtn svg {
+        width: 14px;
+        height: 14px;
+    }
+}
