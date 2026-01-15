@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, use } from 'react';
 import styles from '../product.module.css';
 import ProductCard from '../../../components/ProductCard';
 import productsData from '../../../data/products.json';
@@ -13,10 +13,12 @@ interface PageProps {
 
 const ProductDetailsPage = ({ params }: PageProps) => {
     const { id } = use(params);
-    const [selectedColor, setSelectedColor] = useState('Greenish');
-    const [selectedSize, setSelectedSize] = useState('S');
+    const [selectedColor, setSelectedColor] = useState('');
+    const [selectedSize, setSelectedSize] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isAdded, setIsAdded] = useState(false);
+    const [isDescOpen, setIsDescOpen] = useState(true);
+    const [isShippingOpen, setIsShippingOpen] = useState(false);
     const { addItem } = useCart();
 
     // Find the product in our data
@@ -27,10 +29,18 @@ const ProductDetailsPage = ({ params }: PageProps) => {
             <div className={styles.container}>
                 <div className={styles.breadcrumb}>Home • Product not found</div>
                 <h1>Product Not Found</h1>
-                <p>Sorry, we couldn't find the product you're looking for.</p>
             </div>
         );
     }
+
+    // Clean up description: replace literal \n and \r\n with <br/>
+    const cleanDescription = product.description
+        ? product.description
+            .replace(/\\r\\n/g, '<br/>')
+            .replace(/\\n/g, '<br/>')
+            .replace(/\r\n/g, '<br/>')
+            .replace(/\n/g, '<br/>')
+        : '';
 
     const handleAddToCart = () => {
         setIsLoading(true);
@@ -52,10 +62,13 @@ const ProductDetailsPage = ({ params }: PageProps) => {
         .filter(p => p.id !== id && p.categories[0] === product.categories[0])
         .slice(0, 4);
 
-    // If no related products in same category, just take some others
     const finalRelated = relatedProducts.length > 0
         ? relatedProducts
         : productsData.filter(p => p.id !== id).slice(0, 4);
+
+    // Check if product has variations
+    const hasColors = (product as any).colors && (product as any).colors.length > 0;
+    const hasSizes = (product as any).sizes && (product as any).sizes.length > 0;
 
     return (
         <div className={styles.container}>
@@ -93,87 +106,91 @@ const ProductDetailsPage = ({ params }: PageProps) => {
                         <span className={styles.star}>★</span> 4.9 (41) New Reviews
                     </div>
 
-                    <div className={styles.optionsGrid}>
-                        <div>
-                            <h3 className={styles.sectionTitle}>Color</h3>
-                            <div className={styles.colorOptions}>
-                                {[
-                                    { name: 'Black', color: 'black' },
-                                    { name: 'White', color: 'white' },
-                                    { name: 'Greenish', color: '#9ab09a' },
-                                    { name: 'Grey', color: '#e0e0e0' },
-                                    { name: 'Logan', color: '#7a7a9a' }
-                                ].map((c) => (
-                                    <div key={c.name} className={`${styles.colorOption} ${selectedColor === c.name ? styles.activeColor : ''}`} onClick={() => setSelectedColor(c.name)}>
-                                        <div className={styles.colorCircle} style={{ background: c.color }}></div>
-                                        <span className={styles.colorName}>{c.name}</span>
+                    {(hasColors || hasSizes) && (
+                        <div className={styles.optionsGrid}>
+                            {hasColors && (
+                                <div>
+                                    <h3 className={styles.sectionTitle}>Color</h3>
+                                    <div className={styles.colorOptions}>
+                                        {(product as any).colors.map((c: any) => (
+                                            <div key={c.name} className={`${styles.colorOption} ${selectedColor === c.name ? styles.activeColor : ''}`} onClick={() => setSelectedColor(c.name)}>
+                                                <div className={styles.colorCircle} style={{ background: c.color }}></div>
+                                                <span className={styles.colorName}>{c.name}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
+                                </div>
+                            )}
+                            {hasSizes && (
+                                <div>
+                                    <h3 className={styles.sectionTitle}>Size</h3>
+                                    <div className={styles.sizeOptions}>
+                                        {(product as any).sizes.map((size: string) => (
+                                            <button
+                                                key={size}
+                                                className={`${styles.sizeBtn} ${selectedSize === size ? styles.active : ''}`}
+                                                onClick={() => setSelectedSize(size)}
+                                            >
+                                                {size}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        <div>
-                            <h3 className={styles.sectionTitle}>Size</h3>
-                            <div className={styles.sizeOptions}>
-                                {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
-                                    <button
-                                        key={size}
-                                        className={`${styles.sizeBtn} ${selectedSize === size ? styles.active : ''}`}
-                                        onClick={() => setSelectedSize(size)}
-                                    >
-                                        {size}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    )}
 
-                    <div className={styles.description}>
-                        <div className={styles.sectionHeader}>
+                    <div className={`${styles.accordionSection} ${isDescOpen ? styles.open : ''}`}>
+                        <div className={styles.sectionHeader} onClick={() => setIsDescOpen(!isDescOpen)}>
                             <h3 className={styles.sectionTitle}>Description</h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="18 15 12 9 6 15"></polyline>
+                            <svg className={styles.chevron} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
-                        <div
-                            className={styles.descText}
-                            dangerouslySetInnerHTML={{ __html: product.description }}
-                        />
+                        <div className={styles.accordionContent}>
+                            <div
+                                className={styles.descText}
+                                dangerouslySetInnerHTML={{ __html: cleanDescription }}
+                            />
+                        </div>
                     </div>
 
-                    <div className={styles.shippingContainer}>
-                        <div className={styles.sectionHeader}>
+                    <div className={`${styles.accordionSection} ${isShippingOpen ? styles.open : ''}`}>
+                        <div className={styles.sectionHeader} onClick={() => setIsShippingOpen(!isShippingOpen)}>
                             <h3 className={styles.sectionTitle}>Shipping</h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="18 15 12 9 6 15"></polyline>
+                            <svg className={styles.chevron} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
-                        <div className={styles.shippingSection}>
-                            <div className={styles.shippingCard}>
-                                <div className={styles.shippingIcon}>%</div>
-                                <div className={styles.shippingInfo}>
-                                    <h4>Discount</h4>
-                                    <p>&gt; $50.00 Disc 10%</p>
+                        <div className={styles.accordionContent}>
+                            <div className={styles.shippingSection}>
+                                <div className={styles.shippingCard}>
+                                    <div className={styles.shippingIcon}>%</div>
+                                    <div className={styles.shippingInfo}>
+                                        <h4>Discount</h4>
+                                        <p>&gt; $50.00 Disc 10%</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.shippingCard}>
-                                <div className={styles.shippingIcon}>📦</div>
-                                <div className={styles.shippingInfo}>
-                                    <h4>Package</h4>
-                                    <p>Regular Package</p>
+                                <div className={styles.shippingCard}>
+                                    <div className={styles.shippingIcon}>📦</div>
+                                    <div className={styles.shippingInfo}>
+                                        <h4>Package</h4>
+                                        <p>Regular Package</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.shippingCard}>
-                                <div className={styles.shippingIcon}>📅</div>
-                                <div className={styles.shippingInfo}>
-                                    <h4>Delivery Time</h4>
-                                    <p>3-5 Working Days</p>
+                                <div className={styles.shippingCard}>
+                                    <div className={styles.shippingIcon}>📅</div>
+                                    <div className={styles.shippingInfo}>
+                                        <h4>Delivery Time</h4>
+                                        <p>3-5 Working Days</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.shippingCard}>
-                                <div className={styles.shippingIcon}>🚚</div>
-                                <div className={styles.shippingInfo}>
-                                    <h4>Estimation Arrive</h4>
-                                    <p>Within a week</p>
+                                <div className={styles.shippingCard}>
+                                    <div className={styles.shippingIcon}>🚚</div>
+                                    <div className={styles.shippingInfo}>
+                                        <h4>Estimation Arrive</h4>
+                                        <p>Within a week</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

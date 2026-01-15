@@ -1,0 +1,224 @@
+.aboutPage {
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Hero Section */
+.hero {
+    padding: 10rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/fitness_models_dark_gear.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+}
+
+.heroTitle {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.heroTitle span {
+    color: #D0DCE3;
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+/* Story Section */
+.story {
+    padding: 8rem 0;
+}
+
+.storyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.storyImage img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+.text {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.statNumber {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Values Section */
+.values {
+    padding: 8rem 0;
+    background-color: #f9f9f9;
+}
+
+.valuesHeader {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.valueCard {
+    background: #fff;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.valueCard:hover {
+    transform: translateY(-10px);
+}
+
+.valueIcon {
+    width: 64px;
+    height: 64px;
+    background: #f0f4f7;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    color: #000;
+}
+
+.valueCard h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.valueCard p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Why Choose Us Section */
+.whyChoose {
+    padding: 8rem 0;
+}
+
+.whyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.whyList {
+    list-style: none;
+    padding: 0;
+}
+
+.whyList li {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #666;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.whyList li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #000;
+    font-weight: 700;
+}
+
+.whyImage img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+@media (max-width: 1024px) {
+    .valuesGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .storyGrid,
+    .whyGrid {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .storyGrid,
+    .whyGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .valuesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 6rem 0;
+    }
+
+    .story,
+    .values,
+    .whyChoose {
+        padding: 4rem 0;
+    }
+}

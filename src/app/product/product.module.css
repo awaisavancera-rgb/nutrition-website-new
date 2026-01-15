@@ -115,20 +115,6 @@
     color: #ffb800;
 }
 
-.sectionHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-    cursor: pointer;
-}
-
-.sectionTitle {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0;
-}
-
 .optionsGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -183,22 +169,62 @@
     border-color: black;
 }
 
-.description {
-    margin-bottom: 2rem;
+/* Accordion Styles */
+.accordionSection {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sectionHeader:hover {
+    color: #000;
+}
+
+.sectionTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.open .chevron {
+    transform: rotate(180deg);
+}
+
+.accordionContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.open .accordionContent {
+    max-height: 2000px;
+    opacity: 1;
+    padding-bottom: 1.5rem;
 }
 
 .descText {
     color: #666;
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 0.95rem;
-    margin-bottom: 1rem;
 }
 
 .shippingSection {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 2rem;
 }
 
 .shippingCard {
